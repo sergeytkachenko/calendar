@@ -503,6 +503,7 @@ $.fn.zabuto_calendar = function (options) {
 
     var Calendar = function($el) {
         this.opts = opts;
+        this.$el = $el;
 
         var $calendarElement = $el;
         $calendarElement.attr('id', "zabuto_calendar_" + Math.floor(Math.random() * 99999).toString(36));
