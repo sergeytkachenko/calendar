@@ -176,7 +176,7 @@ $.fn.zabuto_calendar = function (options) {
             $nextMonthNav.append($nextMonthNavIcon);
             if (typeof($calendarElement.data('actionNavFunction')) === 'function') {
                 var fun = $calendarElement.data('actionNavFunction');
-                var toDate = new Date(prevYear, nextMonth);
+                var toDate = new Date(nextYear, nextMonth);
                 $nextMonthNav.click(fun.bind(this, toDate));
             }
             $nextMonthNav.click(function () {
