@@ -146,10 +146,11 @@ $.fn.zabuto_calendar = function (options) {
                 prevMonth = 11;
             }
             $prevMonthNav.data('to', {year: prevYear, month: (prevMonth + 1)});
-            $prevMonthNav.data('toDate', new Date(prevYear, prevMonth - 1));
             $prevMonthNav.append($prevMonthNavIcon);
             if (typeof($calendarElement.data('actionNavFunction')) === 'function') {
-                $prevMonthNav.click($calendarElement.data('actionNavFunction'));
+                var fun = $calendarElement.data('actionNavFunction');
+                var toDate = new Date(prevYear, prevMonth);
+                $prevMonthNav.click(fun.bind(this, toDate));
             }
             $prevMonthNav.click(function (e) {
                 drawTable($calendarElement, $tableObj, prevYear, prevMonth);
@@ -172,12 +173,13 @@ $.fn.zabuto_calendar = function (options) {
                 nextMonth = 0;
             }
             $nextMonthNav.data('to', {year: nextYear, month: (nextMonth + 1)});
-            $prevMonthNav.data('toDate', new Date(prevYear, nextMonth - 1));
             $nextMonthNav.append($nextMonthNavIcon);
             if (typeof($calendarElement.data('actionNavFunction')) === 'function') {
-                $nextMonthNav.click($calendarElement.data('actionNavFunction'));
+                var fun = $calendarElement.data('actionNavFunction');
+                var toDate = new Date(prevYear, nextMonth);
+                $nextMonthNav.click(fun.bind(this, toDate));
             }
-            $nextMonthNav.click(function (e) {
+            $nextMonthNav.click(function () {
                 drawTable($calendarElement, $tableObj, nextYear, nextMonth);
             });
         }
